@@ -1,0 +1,29 @@
+@import 'reset.scss';
+
+$pink: #eb168f;
+$yellow: #fdee37;
+$white: white;
+$black: black;
+
+$sansSerif: 'Questrial', sans-serif;
+
+
+
+body {
+//  background: $pink;
+//  color: $white;
+  font-family: $sansSerif;
+}
+
+header, main, footer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+@import 'headers.scss';
+@import 'bracket-list.scss';
+
+@import 'header.scss';
+@import 'splash-screen.scss';
+@import 'you.scss';

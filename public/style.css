@@ -1,0 +1,149 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  text-decoration: none; }
+
+body {
+  font-family: "Questrial", sans-serif; }
+
+header, main, footer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 8px; }
+
+h1 {
+  text-transform: lowercase;
+  padding: 8px 0 8px 0;
+  font-size: 30px; }
+
+h2 {
+  text-transform: lowercase;
+  padding: 8px 0 8px 0;
+  font-size: 24px; }
+
+.bracket-list ul {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+
+.queen-profile {
+  background: #fdee37;
+  padding: 8px; }
+
+.bracket-list .vital-stats {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: 48px auto; }
+  .bracket-list .vital-stats .name {
+    font-size: 18px; }
+  .bracket-list .vital-stats .photo {
+    width: 40px;
+    height: 40px;
+    grid-column: 1;
+    grid-row: 1 / 3; }
+
+.bracket-list .scoring {
+  margin-top: 8px;
+  font-size: 14px;
+  text-transform: lowercase; }
+  .bracket-list .scoring b {
+    color: #eb168f; }
+
+header {
+  background: #eb168f;
+  color: white;
+  padding: 8px; }
+
+header nav .app-name {
+  color: #fdee37;
+  font-size: 40px;
+  letter-spacing: -2px;
+  line-height: 36px; }
+header nav .main-menu {
+  display: flex;
+  font-size: 20px;
+  margin-top: 4px;
+  text-transform: lowercase; }
+header nav .main-item {
+  padding-right: 16px; }
+header nav .secondary-item {
+  margin-left: auto; }
+header nav a {
+  display: block;
+  color: white;
+  text-decoration: none; }
+  header nav a:hover {
+    text-decoration: underline; }
+
+.splash-screen {
+  padding: 16px 0;
+  text-align: center; }
+  .splash-screen p {
+    font-size: 18px;
+    padding: 0 10%;
+    line-height: 22px; }
+  .splash-screen a {
+    display: inline-block;
+    text-align: center;
+    background: #eb168f;
+    color: white;
+    color: white;
+    padding: 8px 16px;
+    margin-top: 16px; }
+
+.score-so-far {
+  margin-bottom: 16px;
+  text-align: center; }
+  .score-so-far .number {
+    font-size: 80px;
+    display: block; }
+  .score-so-far .caption {
+    font-size: 20px;
+    display: block; }
+
+/*# sourceMappingURL=style.css.map */

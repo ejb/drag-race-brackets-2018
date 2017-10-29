@@ -1,0 +1,38 @@
+
+header {
+  background: $pink;
+  color: $white;
+  padding: 8px;
+}
+
+header nav {
+  .app-name {
+    color: $yellow;
+    font-size: 40px;
+    letter-spacing: -2px;
+    line-height: 36px;
+  }
+  .main-menu {
+    display: flex;
+    font-size: 20px;
+    margin-top: 4px;
+    text-transform: lowercase;
+  }
+  .main-item {
+    padding-right: 16px;
+  }
+  .secondary-item {
+    margin-left: auto;
+  }
+  .active a {
+//    color: $yellow;
+  }
+  a {
+    display: block;
+    color: $white;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

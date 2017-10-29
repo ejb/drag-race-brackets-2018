@@ -1,0 +1,21 @@
+.splash-screen {
+  padding: 16px 0;
+  text-align: center;
+  p {
+    font-size: 18px;
+    padding: 0 10%;
+    line-height: 22px;
+  }
+  a {
+    display: inline-block;
+    text-align: center;
+    background: $pink;
+    color: $white;
+    color: white;
+    padding: 8px 16px;
+    margin-top: 16px;
+    &:hover {
+      
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@mixin header {
+  text-transform: lowercase;
+  padding: 8px 0 8px 0;
+}
+
+h1 {
+  @include header;
+  font-size: 30px;
+}
+
+h2 {
+  @include header;
+  font-size: 24px;
+}
+

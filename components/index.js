@@ -1,11 +1,19 @@
 import React from 'react';
+import SplashPage from './splash';
 
 export default class IndexComponent extends React.Component {
   render() {
-    return (
-      <div>
-        <p>This is the index page</p>
-      </div>
-    );
+    let loggedIn = false;
+    if (loggedIn) {
+      return (
+        <div>
+          Logged-in user
+        </div>
+      );
+    } else {
+      return (
+        <SplashPage />
+      );
+    }
   }
 }
