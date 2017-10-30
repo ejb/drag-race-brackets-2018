@@ -70,10 +70,11 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 }
 
-app.listen(8080, 'localhost', function(err) {
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, 'localhost', function(err) {
   if (err) {
     console.log(err);
     return;
   }
-  console.log('Listening at http://localhost:8080');
+  console.log('Listening at http://localhost:'+PORT);
 });
