@@ -1,16 +1,37 @@
 import express from 'express';
+import passport from 'passport';
 
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 
-import { routes } from './routes';
+import { routes } from './app/routes';
+import configurePassport from './app/passport';
 
 const app = express();
 
-app.use(express.static('public'));
+app
+  .use(express.static('public'))
+  .set('view engine', 'ejs')
 
-app.set('view engine', 'ejs');
+
+configurePassport(passport);
+
+app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+
+// handle the callback after facebook has authenticated the user
+app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect : '/profile',
+        failureRedirect : '/'
+    }));
+
+// route for logging out
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
+
 
 app.get('*', (req, res) => {
   // routes is our object of React routes defined above
@@ -36,6 +57,19 @@ app.get('*', (req, res) => {
     }
   });
 });
+
+
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
+
 app.listen(3003, 'localhost', function(err) {
   if (err) {
     console.log(err);
