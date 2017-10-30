@@ -70,10 +70,10 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 }
 
-app.listen(3003, 'localhost', function(err) {
+app.listen(8080, 'localhost', function(err) {
   if (err) {
     console.log(err);
     return;
   }
-  console.log('Listening at http://localhost:3003');
+  console.log('Listening at http://localhost:8080');
 });
