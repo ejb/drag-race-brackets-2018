@@ -23,6 +23,8 @@
   "dependencies": {
     "express": "4.14.0",
     "express-session": "^1.15.6",
-    "googleapis": "^22.2.0"
+    "googleapis": "^22.2.0",
+    "pg": "7.4.0",
+    "pg-promise": "^5.9.7"
   }
 }
