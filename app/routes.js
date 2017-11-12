@@ -71,7 +71,9 @@ module.exports = (app) => {
               <p>id ${data.id}</p>
           `);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        res.send(err);
+      });
   });
  
   app.use("/", function (req, res) {
@@ -82,6 +84,9 @@ module.exports = (app) => {
             <p>${users.map(u => u.name).join('<br/>')}</p>
             <a href=${url}>Login</a>
         `);
+      }).catch(err => {
+        res.send(err);
       });
+;
   });
 }
