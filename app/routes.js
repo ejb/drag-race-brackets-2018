@@ -1,14 +1,12 @@
 const google = require('googleapis');
 const plus = google.plus('v1');
 
-const {GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET} = process.env;
+const {GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECTION_URL} = process.env;
 if (!GOOGLE_CLIENT_ID) {
   throw(`env var GOOGLE_CLIENT_ID missing`)
 }
 function getOAuthClient (host, encrypted) {
-  const protocol = encrypted ? 'https://' : 'http://'
-  const redirectionUrl = `${protocol}${host || 'localhost:1234'}/oauthCallback`;
-  return new google.auth.OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, redirectionUrl);
+  return new google.auth.OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECTION_URL);
 }
  
 function getAuthUrl (request) {
