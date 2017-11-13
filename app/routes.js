@@ -65,11 +65,24 @@ module.exports = (app) => {
           });
       })
       .then(function (data) {
-          res.send(`
-              <img src=${data.image.url} />
-              <h3>Hello ${data.displayName}</h3>
-              <p>id ${data.id}</p>
-          `);
+        db.checkIfUserExists(data.id)
+          .then(exists => {
+            if (exists) {
+              res.send(`
+                  <img src=${data.image.url} />
+                  <h3>Welcome back ${data.displayName}</h3>
+                  <p>id ${data.id}</p>
+              `);
+            } else {
+              db.addUser(data).then(() => {
+                res.send(`
+                    <img src=${data.image.url} />
+                    <h3>Welcome new user ${data.displayName}</h3>
+                    <p>id ${data.id}</p>
+                `);
+              });
+            }
+          });
       })
       .catch(err => {
         res.send(err);
