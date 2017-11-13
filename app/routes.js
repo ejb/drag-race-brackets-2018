@@ -5,13 +5,14 @@ const {GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET} = process.env;
 if (!GOOGLE_CLIENT_ID) {
   throw(`env var GOOGLE_CLIENT_ID missing`)
 }
-const RedirectionUrl = "http://localhost:1234/oauthCallback";
-function getOAuthClient () {
-    return new google.auth.OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, RedirectionUrl);
+function getOAuthClient (host, encrypted) {
+  const protocol = encrypted ? 'https://' : 'http://'
+  const redirectionUrl = `${protocol}${host || 'localhost:1234'}/oauthCallback`;
+  return new google.auth.OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, redirectionUrl);
 }
  
-function getAuthUrl () {
-    const oauth2Client = getOAuthClient();
+function getAuthUrl (request) {
+    const oauth2Client = getOAuthClient(request.headers.host, request.connection.encrypted);
     // generate a url that asks permissions for Google+ and Google Calendar scopes
     const scopes = [
       'https://www.googleapis.com/auth/plus.me'
@@ -44,6 +45,7 @@ module.exports = (app) => {
           `);
         }
         else{
+          console.log(err);
           res.send(`
               <h3>Login failed!!</h3>
           `);
@@ -85,12 +87,14 @@ module.exports = (app) => {
           });
       })
       .catch(err => {
-        res.send(err);
+        res.send(
+          `<a href="/">Return home</a>`
+        );
       });
   });
  
   app.use("/", function (req, res) {
-      var url = getAuthUrl();
+      var url = getAuthUrl(req);
       db.getAllUsers().then(users => {
         res.send(`
             <h1>Authentication using google oAuth</h1>
